@@ -1,19 +1,39 @@
-# Agapornis Life — protótipo jogável
+# Agapornis Life — protótipo 0.1
 
-Protótipo inicial em orientação horizontal, com cenário 3D low-poly feito em Three.js.
+Protótipo de jogo de manejo e criação de **Agapornis roseicollis**, com interface horizontal e viveiro 3D low-poly.
+
+## O que já funciona
+- Viveiro 3D com câmera giratória por arraste e seleção de aves por toque/clique.
+- Três aves iniciais, painel de fome, sede, felicidade e saúde.
+- Alimentar, fornecer água e fazer carinho.
+- Formar casal com validação básica de sexo, idade e exclusividade.
+- Construir ninho, iniciar postura, avançar incubação e gerar filhotes após 23 dias de jogo.
+- Loja simples, moedas, compra de suprimentos e expansão de viveiros.
+- Avanço de dias, envelhecimento, XP e nível.
+- Salvamento automático no armazenamento local do navegador.
 
 ## Executar
-- Requer Node.js 18+ para os testes.
-- Na pasta do projeto: `npm test`
-- Para jogar localmente: `npm start` e abrir `http://localhost:8080`.
-- O navegador precisa de internet para carregar Three.js pelo CDN.
+O jogo usa módulos ES e Three.js por CDN. É necessário internet na primeira abertura e servir os arquivos por HTTP (não abrir `index.html` diretamente como `file://`).
 
-## Controles
-- Arraste a cena para girar a câmera.
-- Toque em uma ave para selecioná-la.
-- Alimente, faça voar ou transfira a ave.
-- Construa novos viveiros por 100 moedas.
-- Avance o dia para atualizar idade e necessidades básicas.
+Com Node.js instalado:
 
-## Escopo atual
-Inclui núcleo de estado, viveiros, aves, objetos, limites, transferência, salvamento e um visualizador 3D inicial. Ainda não inclui reprodução funcional, genética integrada, filhotes, mercado, persistência automática ao reabrir, nem validação visual em aparelhos Android reais. A animação de voo é demonstrativa e ainda precisa de refinamento.
+```bash
+npm test
+npm run serve
+```
+
+Depois abra `http://localhost:8080` no navegador. Também pode publicar a pasta em um host estático, como GitHub Pages, depois de enviar todos os arquivos e pastas mantendo a estrutura.
+
+## Limitações conhecidas desta versão
+- A genética ainda não foi implementada: os filhotes recebem uma aparência provisória. Não use esta versão para prever cruzamentos reais.
+- Fertilidade e sexo dos filhotes são aleatórios e simplificados para prototipagem.
+- A reprodução ainda não possui comportamento autônomo completo, vínculo genético validado, pedigree detalhado, doenças, mercado de aves ou animações de voo/caminhada completas.
+- A idade mínima de reprodução é uma regra provisória de jogo, não uma recomendação veterinária.
+- O modelo 3D é procedural e simples; a câmera funciona por arraste horizontal.
+
+## Estrutura
+- `index.html`: interface e ponto de entrada.
+- `style.css`: layout horizontal responsivo.
+- `src/main.js`: cena Three.js e ligação da interface.
+- `src/game-core.js`: regras e estado do jogo.
+- `tests/game-core.test.js`: testes automatizados das regras principais.
